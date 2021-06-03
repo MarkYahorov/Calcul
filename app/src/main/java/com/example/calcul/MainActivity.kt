@@ -4,8 +4,19 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
 import android.widget.TextView
+import java.math.RoundingMode
 
 class MainActivity : AppCompatActivity() {
+
+    private val PLUS = 1
+    private val MINUS = 2
+    private val MULTIPLY = 3
+    private val DEVIDE = 4
+
+    private var isFirstPressed: Boolean = true
+    private var mathFunction: Int = 0
+    private var number1: Int = 0
+    private var number2: Int = 0
 
     private lateinit var ziroBtn: Button
     private lateinit var oneBtn: Button
@@ -60,6 +71,9 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun setListenersAllBtn() {
+
+        var result = 0
+
         ziroBtn.setOnClickListener {
             setTextFields("0")
         }
@@ -91,40 +105,67 @@ class MainActivity : AppCompatActivity() {
             setTextFields("9")
         }
         equalsBtn.setOnClickListener {
-            numbersText.append("")
+            if (isFirstPressed) {
+                number2 = numbersText.text.toString().toInt()
+                isFirstPressed = false
+            }
+            checkMathOperation()
         }
         plusBtn.setOnClickListener {
-            if (numbersText.text.substring(numbersText.text.lastIndex) != "+") {
-                setTextFields("+")
-            } else {
-                setTextFields("")
-            }
+            isFirstPressed = true
+            number1 = numbersText.text.toString().toInt()
+            mathFunction = PLUS
+            resultText.text = ""
         }
         minusBtn.setOnClickListener {
-            numbersText.text = ""
+            isFirstPressed = true
+            number1 = numbersText.text.toString().toInt()
+            mathFunction = MINUS
+            resultText.text = ""
         }
         multiplyBtn.setOnClickListener {
-            numbersText.text = ""
+            isFirstPressed = true
+            number1 = numbersText.text.toString().toInt()
+            mathFunction = MULTIPLY
+            resultText.text = ""
         }
         deleteBtn.setOnClickListener {
-            numbersText.text = ""
+            isFirstPressed = true
+            number1 = numbersText.text.toString().toInt()
+            mathFunction = DEVIDE
+            resultText.text = ""
         }
         cleanBtn.setOnClickListener {
             numbersText.text = ""
         }
     }
 
-    fun setTextFields(str: String) {
-        if (resultText.text != "") {
-            numbersText.text = resultText.text
-            resultText.text = ""
-        }
+    private fun setTextFields(str: String) {
         numbersText.append(str)
     }
 
-    fun plusArithmetic(): Int {
-        return 0
+    private fun checkMathOperation() {
+        when (mathFunction) {
+            PLUS -> {
+                number1 += number2
+                resultText.text = number1.toInt().toString()
+            }
+            MINUS -> {
+                number1 -= number2
+                resultText.text = number1.toInt().toString()
+            }
+            MULTIPLY -> {
+                number1 *= number2
+                resultText.text = number1.toInt().toString()
+            }
+            DEVIDE -> {
+                if (resultText.text.toString() != "0") {
+                    number1 /= number2
+                    resultText.text = number1.toInt().toString()
+                } else {
+                    resultText.text = "Error"
+                }
+            }
+        }
     }
-
-
 }
