@@ -115,25 +115,25 @@ class MainActivity : AppCompatActivity() {
             isFirstPressed = true
             number1 = numbersText.text.toString().toInt()
             mathFunction = PLUS
-            resultText.text = ""
+            numbersText.text = ""
         }
         minusBtn.setOnClickListener {
             isFirstPressed = true
             number1 = numbersText.text.toString().toInt()
             mathFunction = MINUS
-            resultText.text = ""
+            numbersText.text = ""
         }
         multiplyBtn.setOnClickListener {
             isFirstPressed = true
             number1 = numbersText.text.toString().toInt()
             mathFunction = MULTIPLY
-            resultText.text = ""
+            numbersText.text = ""
         }
         deleteBtn.setOnClickListener {
             isFirstPressed = true
             number1 = numbersText.text.toString().toInt()
             mathFunction = DEVIDE
-            resultText.text = ""
+            numbersText.text = ""
         }
         cleanBtn.setOnClickListener {
             numbersText.text = ""
@@ -148,22 +148,22 @@ class MainActivity : AppCompatActivity() {
         when (mathFunction) {
             PLUS -> {
                 number1 += number2
-                resultText.text = number1.toInt().toString()
+                numbersText.text = number1.toString()
             }
             MINUS -> {
                 number1 -= number2
-                resultText.text = number1.toInt().toString()
+                numbersText.text = number1.toString()
             }
             MULTIPLY -> {
                 number1 *= number2
-                resultText.text = number1.toInt().toString()
+                numbersText.text = number1.toString()
             }
             DEVIDE -> {
-                if (resultText.text.toString() != "0") {
+                if (numbersText.text.toString() != "0") {
                     number1 /= number2
-                    resultText.text = number1.toInt().toString()
+                    numbersText.text = number1.toInt().toString()
                 } else {
-                    resultText.text = "Error"
+                    numbersText.text = "Error"
                 }
             }
         }
