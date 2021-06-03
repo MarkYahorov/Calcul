@@ -72,8 +72,6 @@ class MainActivity : AppCompatActivity() {
 
     private fun setListenersAllBtn() {
 
-        var result = 0
-
         ziroBtn.setOnClickListener {
             setTextFields("0")
         }
@@ -161,11 +159,31 @@ class MainActivity : AppCompatActivity() {
             DEVIDE -> {
                 if (numbersText.text.toString() != "0") {
                     number1 /= number2
-                    numbersText.text = number1.toInt().toString()
+                    numbersText.text = number1.toString()
                 } else {
                     numbersText.text = "Error"
                 }
             }
         }
+    }
+
+    override fun onStop() {
+        super.onStop()
+        ziroBtn.setOnClickListener (null)
+        oneBtn.setOnClickListener (null)
+        twoBtn.setOnClickListener (null)
+        threeBtn.setOnClickListener (null)
+        fourBtn.setOnClickListener (null)
+        fiveBtn.setOnClickListener (null)
+        sixBtn.setOnClickListener (null)
+        sevenBtn.setOnClickListener (null)
+        eightBtn.setOnClickListener (null)
+        nineBtn.setOnClickListener (null)
+        equalsBtn.setOnClickListener (null)
+        plusBtn.setOnClickListener (null)
+        minusBtn.setOnClickListener (null)
+        multiplyBtn.setOnClickListener (null)
+        deleteBtn.setOnClickListener (null)
+        cleanBtn.setOnClickListener (null)
     }
 }
