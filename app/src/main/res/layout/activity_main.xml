@@ -1,0 +1,210 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/numbers"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:textSize="20sp"
+        android:ellipsize="start"
+        app:layout_constraintHorizontal_weight="3"
+        app:layout_constraintVertical_weight="2"
+        android:gravity="end"
+        app:layout_constraintEnd_toStartOf="@+id/clean_btn"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/equations_and_result"/>
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/equations_and_result"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintVertical_weight="1"
+        app:layout_constraintHorizontal_weight="3"
+        app:layout_constraintBottom_toTopOf="@+id/nine_btn"
+        app:layout_constraintEnd_toEndOf="@+id/numbers"
+        app:layout_constraintStart_toStartOf="@+id/numbers"
+        app:layout_constraintTop_toBottomOf="@+id/numbers" />
+
+    <Button
+        android:id="@+id/clean_btn"
+        style="@style/btns"
+        android:text="@string/clean"
+        app:layout_constraintHorizontal_weight="1"
+        app:layout_constraintVertical_weight="3"
+        app:layout_constraintBottom_toBottomOf="@id/equations_and_result"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/numbers"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/nine_btn"
+        style="@style/btns"
+        android:text="@string/_9"
+        app:layout_constraintVertical_weight="1"
+        app:layout_constraintHorizontal_weight="1"
+        app:layout_constraintBottom_toTopOf="@+id/six_btn"
+        app:layout_constraintEnd_toStartOf="@+id/delete_btn"
+        app:layout_constraintStart_toEndOf="@id/eight_btn"
+        app:layout_constraintTop_toBottomOf="@id/equations_and_result"/>
+
+    <Button
+        android:id="@+id/ziro_btn"
+        style="@style/btns"
+        android:text="@string/_0"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/equals_btn"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/one_btn"
+        app:layout_constraintVertical_weight="1"
+        app:layout_constraintHorizontal_weight="2"/>
+
+    <Button
+        android:id="@+id/three_btn"
+        style="@style/btns"
+        android:text="@string/_3"
+        app:layout_constraintBottom_toTopOf="@+id/equals_btn"
+        app:layout_constraintEnd_toStartOf="@id/minus_btn"
+        app:layout_constraintStart_toEndOf="@id/two_btn"
+        app:layout_constraintTop_toBottomOf="@id/six_btn"
+        app:layout_constraintVertical_weight="1"
+        app:layout_constraintHorizontal_weight="1"/>
+
+    <Button
+        android:id="@+id/minus_btn"
+        style="@style/btns"
+        android:text="@string/minus"
+        app:layout_constraintVertical_weight="1"
+        app:layout_constraintHorizontal_weight="1"
+        app:layout_constraintBottom_toTopOf="@id/plus_btn"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/three_btn"
+        app:layout_constraintTop_toBottomOf="@+id/multiply_btn" />
+
+    <Button
+        android:id="@+id/two_btn"
+        style="@style/btns"
+        android:text="@string/_2"
+        app:layout_constraintTop_toBottomOf="@id/five_btn"
+        app:layout_constraintStart_toEndOf="@id/one_btn"
+        app:layout_constraintEnd_toStartOf="@id/three_btn"
+        app:layout_constraintBottom_toTopOf="@id/ziro_btn"
+        app:layout_constraintVertical_weight="1"
+        app:layout_constraintHorizontal_weight="1"/>
+
+    <Button
+        android:id="@+id/six_btn"
+        style="@style/btns"
+        android:text="@string/_6"
+        app:layout_constraintBottom_toTopOf="@+id/three_btn"
+        app:layout_constraintStart_toEndOf="@id/five_btn"
+        app:layout_constraintEnd_toStartOf="@id/multiply_btn"
+        app:layout_constraintTop_toBottomOf="@id/nine_btn"
+        app:layout_constraintVertical_weight="1"
+        app:layout_constraintHorizontal_weight="1"/>
+
+    <Button
+        android:id="@+id/five_btn"
+        style="@style/btns"
+        android:text="@string/_5"
+        app:layout_constraintBottom_toTopOf="@+id/two_btn"
+        app:layout_constraintEnd_toStartOf="@id/six_btn"
+        app:layout_constraintTop_toBottomOf="@id/eight_btn"
+        app:layout_constraintStart_toEndOf="@id/four_btn"
+        app:layout_constraintVertical_weight="1"
+        app:layout_constraintHorizontal_weight="1"/>
+
+    <Button
+        android:id="@+id/one_btn"
+        style="@style/btns"
+        android:text="@string/_1"
+        app:layout_constraintBottom_toTopOf="@+id/ziro_btn"
+        app:layout_constraintEnd_toStartOf="@id/two_btn"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/four_btn"
+        app:layout_constraintVertical_weight="1"
+        app:layout_constraintHorizontal_weight="1"/>
+
+    <Button
+        android:id="@+id/plus_btn"
+        style="@style/btns"
+        android:text="@string/plus"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@id/minus_btn"
+        app:layout_constraintStart_toEndOf="@id/equals_btn"
+        app:layout_constraintTop_toBottomOf="@+id/minus_btn"
+        app:layout_constraintVertical_weight="1"
+        app:layout_constraintHorizontal_weight="1"/>
+
+    <Button
+        android:id="@+id/four_btn"
+        style="@style/btns"
+        android:text="@string/_4"
+        app:layout_constraintBottom_toTopOf="@+id/one_btn"
+        app:layout_constraintEnd_toStartOf="@id/five_btn"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/seven_btn"
+        app:layout_constraintVertical_weight="1"
+        app:layout_constraintHorizontal_weight="1"/>
+
+    <Button
+        android:id="@+id/delete_btn"
+        style="@style/btns"
+        android:text="@string/delete"
+        app:layout_constraintBottom_toTopOf="@id/multiply_btn"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/nine_btn"
+        app:layout_constraintTop_toBottomOf="@id/clean_btn"
+        app:layout_constraintVertical_weight="1"
+        app:layout_constraintHorizontal_weight="1"/>
+
+    <Button
+        android:id="@+id/multiply_btn"
+        style="@style/btns"
+        android:text="@string/multiply"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/delete_btn"
+        app:layout_constraintTop_toBottomOf="@+id/delete_btn"
+        app:layout_constraintBottom_toTopOf="@id/minus_btn"
+        app:layout_constraintVertical_weight="1"
+        app:layout_constraintHorizontal_weight="1"/>
+
+    <Button
+        android:id="@+id/seven_btn"
+        style="@style/btns"
+        android:text="@string/_7"
+        app:layout_constraintBottom_toTopOf="@+id/four_btn"
+        app:layout_constraintEnd_toStartOf="@+id/eight_btn"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/equations_and_result"
+        app:layout_constraintVertical_weight="1"
+        app:layout_constraintHorizontal_weight="1"/>
+
+    <Button
+        android:id="@+id/eight_btn"
+        style="@style/btns"
+        android:text="@string/_8"
+        app:layout_constraintBottom_toTopOf="@id/five_btn"
+        app:layout_constraintEnd_toStartOf="@+id/nine_btn"
+        app:layout_constraintStart_toEndOf="@id/seven_btn"
+        app:layout_constraintTop_toBottomOf="@id/equations_and_result"
+        app:layout_constraintVertical_weight="1"
+        app:layout_constraintHorizontal_weight="1"/>
+
+    <Button
+        android:id="@+id/equals_btn"
+        style="@style/btns"
+        android:text="@string/equals"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/plus_btn"
+        app:layout_constraintStart_toEndOf="@id/ziro_btn"
+        app:layout_constraintTop_toBottomOf="@id/three_btn"
+        app:layout_constraintVertical_weight="1"
+        app:layout_constraintHorizontal_weight="1"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
