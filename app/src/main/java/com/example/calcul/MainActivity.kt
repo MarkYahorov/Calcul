@@ -4,8 +4,19 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
 import android.widget.TextView
+import java.math.RoundingMode
 
 class MainActivity : AppCompatActivity() {
+
+    private val PLUS = 1
+    private val MINUS = 2
+    private val MULTIPLY = 3
+    private val DEVIDE = 4
+
+    private var isFirstPressed: Boolean = true
+    private var mathFunction: Int = 0
+    private var number1: Int = 0
+    private var number2: Int = 0
 
     private lateinit var ziroBtn: Button
     private lateinit var oneBtn: Button
@@ -60,6 +71,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun setListenersAllBtn() {
+
         ziroBtn.setOnClickListener {
             setTextFields("0")
         }
@@ -91,22 +103,34 @@ class MainActivity : AppCompatActivity() {
             setTextFields("9")
         }
         equalsBtn.setOnClickListener {
-            numbersText.append("")
+            if (isFirstPressed) {
+                number2 = numbersText.text.toString().toInt()
+                isFirstPressed = false
+            }
+            checkMathOperation()
         }
         plusBtn.setOnClickListener {
-            if (numbersText.text.substring(numbersText.text.lastIndex) != "+") {
-                setTextFields("+")
-            } else {
-                setTextFields("")
-            }
+            isFirstPressed = true
+            number1 = numbersText.text.toString().toInt()
+            mathFunction = PLUS
+            numbersText.text = ""
         }
         minusBtn.setOnClickListener {
+            isFirstPressed = true
+            number1 = numbersText.text.toString().toInt()
+            mathFunction = MINUS
             numbersText.text = ""
         }
         multiplyBtn.setOnClickListener {
+            isFirstPressed = true
+            number1 = numbersText.text.toString().toInt()
+            mathFunction = MULTIPLY
             numbersText.text = ""
         }
         deleteBtn.setOnClickListener {
+            isFirstPressed = true
+            number1 = numbersText.text.toString().toInt()
+            mathFunction = DEVIDE
             numbersText.text = ""
         }
         cleanBtn.setOnClickListener {
@@ -114,17 +138,52 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    fun setTextFields(str: String) {
-        if (resultText.text != "") {
-            numbersText.text = resultText.text
-            resultText.text = ""
-        }
+    private fun setTextFields(str: String) {
         numbersText.append(str)
     }
 
-    fun plusArithmetic(): Int {
-        return 0
+    private fun checkMathOperation() {
+        when (mathFunction) {
+            PLUS -> {
+                number1 += number2
+                numbersText.text = number1.toString()
+            }
+            MINUS -> {
+                number1 -= number2
+                numbersText.text = number1.toString()
+            }
+            MULTIPLY -> {
+                number1 *= number2
+                numbersText.text = number1.toString()
+            }
+            DEVIDE -> {
+                if (numbersText.text.toString() != "0") {
+                    number1 /= number2
+                    numbersText.text = number1.toString()
+                } else {
+                    numbersText.text = "Error"
+                }
+            }
+        }
     }
 
-
+    override fun onStop() {
+        super.onStop()
+        ziroBtn.setOnClickListener (null)
+        oneBtn.setOnClickListener (null)
+        twoBtn.setOnClickListener (null)
+        threeBtn.setOnClickListener (null)
+        fourBtn.setOnClickListener (null)
+        fiveBtn.setOnClickListener (null)
+        sixBtn.setOnClickListener (null)
+        sevenBtn.setOnClickListener (null)
+        eightBtn.setOnClickListener (null)
+        nineBtn.setOnClickListener (null)
+        equalsBtn.setOnClickListener (null)
+        plusBtn.setOnClickListener (null)
+        minusBtn.setOnClickListener (null)
+        multiplyBtn.setOnClickListener (null)
+        deleteBtn.setOnClickListener (null)
+        cleanBtn.setOnClickListener (null)
+    }
 }
