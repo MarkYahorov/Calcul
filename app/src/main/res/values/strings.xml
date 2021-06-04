@@ -20,4 +20,5 @@
     <string name="all_values">Все значения</string>
     <string name="save">Сохранить</string>
     <string name="calc">Калькулятор</string>
+    <string name="current_text">Настоящее значение</string>
 </resources>

@@ -109,4 +109,10 @@ class StartActivity : AppCompatActivity() {
     private fun loadDataAndUpdateView(){
         allValues.text = getSharedPreferences(SHARED, Context.MODE_PRIVATE).getString(TEXT, null)
     }
+
+    override fun onStop() {
+        super.onStop()
+        saveBtn.setOnClickListener(null)
+        calcBtn.setOnClickListener(null)
+    }
 }

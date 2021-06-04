@@ -18,12 +18,7 @@
 
     <TextView
         android:id="@+id/all_values"
-        android:layout_width="0dp"
-        android:gravity="center"
-        android:singleLine="false"
-        android:textSize="25sp"
-        android:lines="5"
-        android:layout_height="wrap_content"
+        style="@style/text_all_values"
         app:layout_constraintBottom_toTopOf="@+id/textView3"
         app:layout_constraintEnd_toEndOf="@id/textView"
         app:layout_constraintStart_toStartOf="@id/textView"
@@ -33,7 +28,7 @@
         android:id="@+id/textView3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="TextView"
+        android:text="@string/current_text"
         app:layout_constraintBottom_toTopOf="@+id/save_btn"
         app:layout_constraintEnd_toEndOf="@id/all_values"
         app:layout_constraintStart_toStartOf="@id/all_values"
@@ -41,10 +36,7 @@
 
     <TextView
         android:id="@+id/current_value"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        android:textSize="24sp"
+        style="@style/text_current_value"
         app:layout_constraintBottom_toTopOf="@+id/calcul_btn"
         app:layout_constraintEnd_toStartOf="@+id/save_btn"
         app:layout_constraintStart_toStartOf="parent"
@@ -52,8 +44,7 @@
 
     <Button
         android:id="@+id/save_btn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        style="@style/btns_of_start_screen"
         android:text="@string/save"
         app:layout_constraintBottom_toTopOf="@+id/calcul_btn"
         app:layout_constraintEnd_toEndOf="parent"
@@ -62,8 +53,7 @@
 
     <Button
         android:id="@+id/calcul_btn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        style="@style/btns_of_start_screen"
         android:text="@string/calc"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
