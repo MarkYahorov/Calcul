@@ -5,21 +5,13 @@ import android.os.Bundle
 import android.widget.Button
 import android.widget.TextView
 import android.widget.Toast
-import java.math.RoundingMode
 
 class MainActivity : AppCompatActivity() {
 
     private val list = mutableListOf("", "", "")
-    private val PLUS = 1
-    private val MINUS = 2
-    private val MULTIPLY = 3
-    private val DEVIDE = 4
+    private val STATE = "STATE"
 
     private var result: Number = 0
-    private var isFirstPressed: Boolean = true
-    private var mathFunction: Int = 0
-    private var number1: Int = 0
-    private var number2: Int = 0
 
     private lateinit var ziroBtn: Button
     private lateinit var oneBtn: Button
@@ -124,7 +116,7 @@ class MainActivity : AppCompatActivity() {
             mathOper("+")
         }
         minusBtn.setOnClickListener {
-           mathOper("-")
+            mathOper("-")
         }
         multiplyBtn.setOnClickListener {
             mathOper("*")
@@ -149,14 +141,14 @@ class MainActivity : AppCompatActivity() {
         if (list[0] == "" || list[0] != "" && list[1] == "") {
             list[0] = numbersText.text.toString()
         }
-        if (list[0] != "" && list[1] != ""){
+        if (list[0] != "" && list[1] != "") {
             list[2] = numbersText.text.toString()
         }
     }
 
-    private fun equalsBtn(){
-        if(list[0] != "" && list[1] != "" && list[2]!= ""){
-            if (list[1]!="/" && list[2]!="0") {
+    private fun equalsBtn() {
+        if (list[0] != "" && list[1] != "" && list[2] != "") {
+            if (list[1] != "/" && list[2] != "0") {
                 when {
                     list[1] == "+" -> {
                         result = list[0].toInt() + list[2].toInt()
@@ -187,14 +179,14 @@ class MainActivity : AppCompatActivity() {
                         numbersText.text = list[0]
                     }
                 }
-            }else {
+            } else {
                 numbersText.text = "Error"
             }
-        } else if (list[0] == ""){
+        } else if (list[0] == "") {
             numbersText.text = ""
-        } else if (list[0] != "" && list[1] == ""){
+        } else if (list[0] != "" && list[1] == "") {
             numbersText.text = list[0]
-        } else if (list[2] == ""){
+        } else if (list[2] == "") {
             numbersText.text = "Error"
             list[0] = ""
             list[1] = ""
@@ -202,12 +194,12 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    private fun mathOper(str: String){
-        if (list[0] != "" && list[1] == "" && list[2] == ""){
+    private fun mathOper(str: String) {
+        if (list[0] != "" && list[1] == "" && list[2] == "") {
             list[1] = str
             numbersText.text = ""
-        } else if (list[0] != "" && list[1] != "" && list[2] != ""){
-            if(list[1]!="/" && list[2]!= "0") {
+        } else if (list[0] != "" && list[1] != "" && list[2] != "") {
+            if (list[1] != "/" && list[2] != "0") {
                 numbersText.text = ""
                 when {
                     list[1] == "+" -> {
@@ -244,31 +236,16 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    private fun checkMathOperation() {
-        when (mathFunction) {
-            PLUS -> {
-                number1 += number2
-                numbersText.text = number1.toString()
-            }
-            MINUS -> {
-                number1 -= number2
-                numbersText.text = number1.toString()
-            }
-            MULTIPLY -> {
-                number1 *= number2
-                numbersText.text = number1.toString()
-            }
-            DEVIDE -> {
-                if (numbersText.text.toString() != "0") {
-                    number1 /= number2
-                    numbersText.text = number1.toString()
-                } else {
-                    numbersText.text = "Error"
-                }
-            }
-        }
+    override fun onSaveInstanceState(outState: Bundle) {
+        super.onSaveInstanceState(outState)
+        outState.putString(STATE, list[0])
     }
 
+    override fun onRestoreInstanceState(savedInstanceState: Bundle) {
+        super.onRestoreInstanceState(savedInstanceState)
+        list[0] = savedInstanceState.getString(STATE).toString()
+        numbersText.text = list[0]
+    }
 
     override fun onStop() {
         super.onStop()
