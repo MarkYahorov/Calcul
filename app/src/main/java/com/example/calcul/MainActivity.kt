@@ -4,15 +4,18 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
 import android.widget.TextView
+import android.widget.Toast
 import java.math.RoundingMode
 
 class MainActivity : AppCompatActivity() {
 
+    private val list = mutableListOf("", "", "")
     private val PLUS = 1
     private val MINUS = 2
     private val MULTIPLY = 3
     private val DEVIDE = 4
 
+    private var result: Number = 0
     private var isFirstPressed: Boolean = true
     private var mathFunction: Int = 0
     private var number1: Int = 0
@@ -74,72 +77,171 @@ class MainActivity : AppCompatActivity() {
 
         ziroBtn.setOnClickListener {
             setTextFields("0")
+            checkThisCell()
         }
         oneBtn.setOnClickListener {
             setTextFields("1")
+            checkThisCell()
         }
         twoBtn.setOnClickListener {
             setTextFields("2")
+            checkThisCell()
         }
         threeBtn.setOnClickListener {
             setTextFields("3")
+            checkThisCell()
         }
         fourBtn.setOnClickListener {
             setTextFields("4")
+            checkThisCell()
         }
         fiveBtn.setOnClickListener {
             setTextFields("5")
+            checkThisCell()
         }
         sixBtn.setOnClickListener {
             setTextFields("6")
+            checkThisCell()
         }
         sevenBtn.setOnClickListener {
             setTextFields("7")
+            checkThisCell()
         }
         eightBtn.setOnClickListener {
             setTextFields("8")
+            checkThisCell()
         }
         nineBtn.setOnClickListener {
             setTextFields("9")
+            checkThisCell()
+
         }
         equalsBtn.setOnClickListener {
-            if (isFirstPressed) {
-                number2 = numbersText.text.toString().toInt()
-                isFirstPressed = false
-            }
-            checkMathOperation()
+            equalsBtn()
+            Toast.makeText(this, list[0], Toast.LENGTH_LONG).show()
         }
         plusBtn.setOnClickListener {
-            isFirstPressed = true
-            number1 = numbersText.text.toString().toInt()
-            mathFunction = PLUS
-            numbersText.text = ""
+            mathOper("+")
         }
         minusBtn.setOnClickListener {
-            isFirstPressed = true
-            number1 = numbersText.text.toString().toInt()
-            mathFunction = MINUS
-            numbersText.text = ""
+           mathOper("-")
         }
         multiplyBtn.setOnClickListener {
-            isFirstPressed = true
-            number1 = numbersText.text.toString().toInt()
-            mathFunction = MULTIPLY
-            numbersText.text = ""
+            mathOper("*")
         }
         deleteBtn.setOnClickListener {
-            isFirstPressed = true
-            number1 = numbersText.text.toString().toInt()
-            mathFunction = DEVIDE
-            numbersText.text = ""
+            mathOper("/")
         }
         cleanBtn.setOnClickListener {
             numbersText.text = ""
+            resultText.text = ""
+            list[0] = ""
+            list[1] = ""
+            list[2] = ""
         }
     }
 
     private fun setTextFields(str: String) {
         numbersText.append(str)
+    }
+
+    private fun checkThisCell() {
+        if (list[0] == "" || list[0] != "" && list[1] == "") {
+            list[0] = numbersText.text.toString()
+        }
+        if (list[0] != "" && list[1] != ""){
+            list[2] = numbersText.text.toString()
+        }
+    }
+
+    private fun equalsBtn(){
+        if(list[0] != "" && list[1] != "" && list[2]!= ""){
+            if (list[1]!="/" && list[2]!="0") {
+                when {
+                    list[1] == "+" -> {
+                        result = list[0].toInt() + list[2].toInt()
+                        list[0] = result.toString()
+                        list[1] = ""
+                        list[2] = ""
+                        numbersText.text = list[0]
+                    }
+                    list[1] == "-" -> {
+                        result = list[0].toInt() - list[2].toInt()
+                        list[0] = result.toString()
+                        list[1] = ""
+                        list[2] = ""
+                        numbersText.text = list[0]
+                    }
+                    list[1] == "*" -> {
+                        result = list[0].toInt() * list[2].toInt()
+                        list[0] = result.toString()
+                        list[1] = ""
+                        list[2] = ""
+                        numbersText.text = list[0]
+                    }
+                    list[1] == "/" -> {
+                        result = list[0].toInt() / list[2].toInt()
+                        list[0] = result.toString()
+                        list[1] = ""
+                        list[2] = ""
+                        numbersText.text = list[0]
+                    }
+                }
+            }else {
+                numbersText.text = "Error"
+            }
+        } else if (list[0] == ""){
+            numbersText.text = ""
+        } else if (list[0] != "" && list[1] == ""){
+            numbersText.text = list[0]
+        } else if (list[2] == ""){
+            numbersText.text = "Error"
+            list[0] = ""
+            list[1] = ""
+            list[2] = ""
+        }
+    }
+
+    private fun mathOper(str: String){
+        if (list[0] != "" && list[1] == "" && list[2] == ""){
+            list[1] = str
+            numbersText.text = ""
+        } else if (list[0] != "" && list[1] != "" && list[2] != ""){
+            if(list[1]!="/" && list[2]!= "0") {
+                numbersText.text = ""
+                when {
+                    list[1] == "+" -> {
+                        result = list[0].toInt() + list[2].toInt()
+                        list[0] = result.toString()
+                        list[1] = str
+                        list[2] = ""
+                    }
+                    list[1] == "-" -> {
+                        result = list[0].toInt() - list[2].toInt()
+                        list[0] = result.toString()
+                        list[1] = str
+                        list[2] = ""
+                    }
+                    list[1] == "*" -> {
+                        result = list[0].toInt() * list[2].toInt()
+                        list[0] = result.toString()
+                        list[1] = str
+                        list[2] = ""
+                    }
+                    list[1] == "/" -> {
+                        result = list[0].toInt() / list[2].toInt()
+                        list[0] = result.toString()
+                        list[1] = str
+                        list[2] = ""
+                    }
+                }
+            } else {
+                numbersText.text = "Error"
+                list[0] = ""
+                list[1] = ""
+                list[2] = ""
+            }
+        }
     }
 
     private fun checkMathOperation() {
@@ -167,23 +269,24 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
+
     override fun onStop() {
         super.onStop()
-        ziroBtn.setOnClickListener (null)
-        oneBtn.setOnClickListener (null)
-        twoBtn.setOnClickListener (null)
-        threeBtn.setOnClickListener (null)
-        fourBtn.setOnClickListener (null)
-        fiveBtn.setOnClickListener (null)
-        sixBtn.setOnClickListener (null)
-        sevenBtn.setOnClickListener (null)
-        eightBtn.setOnClickListener (null)
-        nineBtn.setOnClickListener (null)
-        equalsBtn.setOnClickListener (null)
-        plusBtn.setOnClickListener (null)
-        minusBtn.setOnClickListener (null)
-        multiplyBtn.setOnClickListener (null)
-        deleteBtn.setOnClickListener (null)
-        cleanBtn.setOnClickListener (null)
+        ziroBtn.setOnClickListener(null)
+        oneBtn.setOnClickListener(null)
+        twoBtn.setOnClickListener(null)
+        threeBtn.setOnClickListener(null)
+        fourBtn.setOnClickListener(null)
+        fiveBtn.setOnClickListener(null)
+        sixBtn.setOnClickListener(null)
+        sevenBtn.setOnClickListener(null)
+        eightBtn.setOnClickListener(null)
+        nineBtn.setOnClickListener(null)
+        equalsBtn.setOnClickListener(null)
+        plusBtn.setOnClickListener(null)
+        minusBtn.setOnClickListener(null)
+        multiplyBtn.setOnClickListener(null)
+        deleteBtn.setOnClickListener(null)
+        cleanBtn.setOnClickListener(null)
     }
 }
