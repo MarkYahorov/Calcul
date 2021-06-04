@@ -16,4 +16,8 @@
     <string name="_7">7</string>
     <string name="_8">8</string>
     <string name="equals">=</string>
+    <string name="ok">OK</string>
+    <string name="all_values">Все значения</string>
+    <string name="save">Сохранить</string>
+    <string name="calc">Калькулятор</string>
 </resources>
