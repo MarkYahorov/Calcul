@@ -68,7 +68,6 @@ class StartActivity : AppCompatActivity() {
 
     private fun saveSharedPrefAndSetAllValues() {
         saveBtn.setOnClickListener {
-
             if(firstValue == ""){
                 firstValue = currentValue.text.toString()
                 setText()

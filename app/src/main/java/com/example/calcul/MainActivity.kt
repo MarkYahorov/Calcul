@@ -70,7 +70,6 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun setListenersAllBtn() {
-
         ziroBtn.setOnClickListener {
             setTextFields("0")
             checkThisCell()
@@ -113,20 +112,20 @@ class MainActivity : AppCompatActivity() {
 
         }
         equalsBtn.setOnClickListener {
-            equalsBtn()
+            calculationOfTheFinalExpressionAndDisplayingTheResultingValue()
             Toast.makeText(this, list[0], Toast.LENGTH_LONG).show()
         }
         plusBtn.setOnClickListener {
-            mathOper("+")
+            mathOperation("+")
         }
         minusBtn.setOnClickListener {
-            mathOper("-")
+            mathOperation("-")
         }
         multiplyBtn.setOnClickListener {
-            mathOper("*")
+            mathOperation("*")
         }
         deleteBtn.setOnClickListener {
-            mathOper("/")
+            mathOperation("/")
         }
         cleanBtn.setOnClickListener {
             numbersText.text = ""
@@ -135,7 +134,6 @@ class MainActivity : AppCompatActivity() {
             list[1] = ""
             list[2] = ""
         }
-
         btnOk.setOnClickListener {
             val intent = Intent()
                 .putExtra("EXTRA_CURRENT_NUMBER", list2[0])
@@ -157,7 +155,7 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    private fun equalsBtn() {
+    private fun calculationOfTheFinalExpressionAndDisplayingTheResultingValue() {
         if (list[0] != "" && list[1] != "" && list[2] != "") {
             if (list[1] != "/" && list[2] != "0") {
                 when {
@@ -204,44 +202,44 @@ class MainActivity : AppCompatActivity() {
         } else if (list[2] == "") {
             when {
                 list[1] == "+" -> {
-                    if(list2[0] == ""){
+                    if (list2[0] == "") {
                         result = list[0].toInt() + list[0].toInt()
                         list2[0] = result.toString()
                         numbersText.text = list2[0]
-                    }else {
+                    } else {
                         result = list2[0].toInt() + list[0].toInt()
                         list2[0] = result.toString()
                         numbersText.text = list2[0]
                     }
                 }
                 list[1] == "-" -> {
-                    if(list2[0] == ""){
+                    if (list2[0] == "") {
                         result = list[0].toInt() - list[0].toInt()
                         list2[0] = result.toString()
                         numbersText.text = list2[0]
-                    }else {
+                    } else {
                         result = list2[0].toInt() - list[0].toInt()
                         list2[0] = result.toString()
                         numbersText.text = list2[0]
                     }
                 }
                 list[1] == "*" -> {
-                    if(list2[0] == ""){
+                    if (list2[0] == "") {
                         result = list[0].toInt() * list[0].toInt()
                         list2[0] = result.toString()
                         numbersText.text = list2[0]
-                    }else {
+                    } else {
                         result = list2[0].toInt() * list[0].toInt()
                         list2[0] = result.toString()
                         numbersText.text = list2[0]
                     }
                 }
                 list[1] == "/" -> {
-                    if(list2[0] == ""){
+                    if (list2[0] == "") {
                         result = list[0].toInt() / list[0].toInt()
                         list2[0] = result.toString()
                         numbersText.text = list2[0]
-                    }else {
+                    } else {
                         result = list2[0].toInt() / list[0].toInt()
                         list2[0] = result.toString()
                         numbersText.text = list2[0]
@@ -251,7 +249,7 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    private fun mathOper(str: String) {
+    private fun mathOperation(str: String) {
         if (list[0] != "" && list[1] == "" && list[2] == "") {
             list[1] = str
             numbersText.text = ""
