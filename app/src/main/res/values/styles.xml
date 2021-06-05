@@ -8,5 +8,13 @@
         <item name="android:gravity">center</item>
     </style>
 
+    <style name="text">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">0dp</item>
+        <item name="android:textSize">20sp</item>
+        <item name="android:gravity">end</item>
+        <item name="android:ellipsize">start</item>
+    </style>
+
 
 </resources>

@@ -8,13 +8,9 @@
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/numbers"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:textSize="20sp"
-        android:ellipsize="start"
+        style="@style/text"
         app:layout_constraintHorizontal_weight="3"
         app:layout_constraintVertical_weight="2"
-        android:gravity="end"
         app:layout_constraintEnd_toStartOf="@+id/clean_btn"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
@@ -22,8 +18,7 @@
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/equations_and_result"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
+        style="@style/text"
         app:layout_constraintVertical_weight="1"
         app:layout_constraintHorizontal_weight="3"
         app:layout_constraintBottom_toTopOf="@+id/nine_btn"
@@ -31,7 +26,7 @@
         app:layout_constraintStart_toStartOf="@+id/numbers"
         app:layout_constraintTop_toBottomOf="@+id/numbers" />
 
-    <Button
+    <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/clean_btn"
         style="@style/btns"
         android:text="@string/clean"
@@ -42,7 +37,7 @@
         app:layout_constraintStart_toEndOf="@id/numbers"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <Button
+    <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/nine_btn"
         style="@style/btns"
         android:text="@string/_9"
@@ -53,7 +48,7 @@
         app:layout_constraintStart_toEndOf="@id/eight_btn"
         app:layout_constraintTop_toBottomOf="@id/equations_and_result"/>
 
-    <Button
+    <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/ziro_btn"
         style="@style/btns"
         android:text="@string/_0"
@@ -64,7 +59,7 @@
         app:layout_constraintVertical_weight="1"
         app:layout_constraintHorizontal_weight="2"/>
 
-    <Button
+    <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/three_btn"
         style="@style/btns"
         android:text="@string/_3"
@@ -75,7 +70,7 @@
         app:layout_constraintVertical_weight="1"
         app:layout_constraintHorizontal_weight="1"/>
 
-    <Button
+    <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/minus_btn"
         style="@style/btns"
         android:text="@string/minus"
@@ -86,7 +81,7 @@
         app:layout_constraintStart_toEndOf="@id/three_btn"
         app:layout_constraintTop_toBottomOf="@+id/multiply_btn" />
 
-    <Button
+    <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/two_btn"
         style="@style/btns"
         android:text="@string/_2"
@@ -97,7 +92,7 @@
         app:layout_constraintVertical_weight="1"
         app:layout_constraintHorizontal_weight="1"/>
 
-    <Button
+    <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/six_btn"
         style="@style/btns"
         android:text="@string/_6"
@@ -108,7 +103,7 @@
         app:layout_constraintVertical_weight="1"
         app:layout_constraintHorizontal_weight="1"/>
 
-    <Button
+    <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/five_btn"
         style="@style/btns"
         android:text="@string/_5"
@@ -119,7 +114,7 @@
         app:layout_constraintVertical_weight="1"
         app:layout_constraintHorizontal_weight="1"/>
 
-    <Button
+    <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/one_btn"
         style="@style/btns"
         android:text="@string/_1"
@@ -130,7 +125,7 @@
         app:layout_constraintVertical_weight="1"
         app:layout_constraintHorizontal_weight="1"/>
 
-    <Button
+    <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/plus_btn"
         style="@style/btns"
         android:text="@string/plus"
@@ -141,7 +136,7 @@
         app:layout_constraintVertical_weight="1"
         app:layout_constraintHorizontal_weight="1"/>
 
-    <Button
+    <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/four_btn"
         style="@style/btns"
         android:text="@string/_4"
@@ -152,7 +147,7 @@
         app:layout_constraintVertical_weight="1"
         app:layout_constraintHorizontal_weight="1"/>
 
-    <Button
+    <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/delete_btn"
         style="@style/btns"
         android:text="@string/delete"
@@ -163,7 +158,7 @@
         app:layout_constraintVertical_weight="1"
         app:layout_constraintHorizontal_weight="1"/>
 
-    <Button
+    <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/multiply_btn"
         style="@style/btns"
         android:text="@string/multiply"
@@ -174,7 +169,7 @@
         app:layout_constraintVertical_weight="1"
         app:layout_constraintHorizontal_weight="1"/>
 
-    <Button
+    <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/seven_btn"
         style="@style/btns"
         android:text="@string/_7"
@@ -185,7 +180,7 @@
         app:layout_constraintVertical_weight="1"
         app:layout_constraintHorizontal_weight="1"/>
 
-    <Button
+    <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/eight_btn"
         style="@style/btns"
         android:text="@string/_8"
@@ -196,7 +191,7 @@
         app:layout_constraintVertical_weight="1"
         app:layout_constraintHorizontal_weight="1"/>
 
-    <Button
+    <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/equals_btn"
         style="@style/btns"
         android:text="@string/equals"
