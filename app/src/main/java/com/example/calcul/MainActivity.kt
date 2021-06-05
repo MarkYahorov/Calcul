@@ -109,7 +109,7 @@ class MainActivity : AppCompatActivity() {
 
         }
         equalsBtn.setOnClickListener {
-            equalsBtn()
+            calculationOfTheFinalExpressionAndDisplayingTheResultingValue()
             Toast.makeText(this, list[0], Toast.LENGTH_LONG).show()
         }
         plusBtn.setOnClickListener {
@@ -146,39 +146,11 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    private fun equalsBtn() {
+    private fun calculationOfTheFinalExpressionAndDisplayingTheResultingValue() {
         if (list[0] != "" && list[1] != "" && list[2] != "") {
             if (list[1] != "/" && list[2] != "0") {
-                when {
-                    list[1] == "+" -> {
-                        result = list[0].toInt() + list[2].toInt()
-                        list[0] = result.toString()
-                        list[1] = ""
-                        list[2] = ""
-                        numbersText.text = list[0]
-                    }
-                    list[1] == "-" -> {
-                        result = list[0].toInt() - list[2].toInt()
-                        list[0] = result.toString()
-                        list[1] = ""
-                        list[2] = ""
-                        numbersText.text = list[0]
-                    }
-                    list[1] == "*" -> {
-                        result = list[0].toInt() * list[2].toInt()
-                        list[0] = result.toString()
-                        list[1] = ""
-                        list[2] = ""
-                        numbersText.text = list[0]
-                    }
-                    list[1] == "/" -> {
-                        result = list[0].toInt() / list[2].toInt()
-                        list[0] = result.toString()
-                        list[1] = ""
-                        list[2] = ""
-                        numbersText.text = list[0]
-                    }
-                }
+                calculatingNumbers("")
+                numbersText.text = list[0]
             } else {
                 numbersText.text = "Error"
             }
@@ -187,10 +159,7 @@ class MainActivity : AppCompatActivity() {
         } else if (list[0] != "" && list[1] == "") {
             numbersText.text = list[0]
         } else if (list[2] == "") {
-            numbersText.text = "Error"
-            list[0] = ""
-            list[1] = ""
-            list[2] = ""
+            setError()
         }
     }
 
@@ -201,39 +170,47 @@ class MainActivity : AppCompatActivity() {
         } else if (list[0] != "" && list[1] != "" && list[2] != "") {
             if (list[1] != "/" && list[2] != "0") {
                 numbersText.text = ""
-                when {
-                    list[1] == "+" -> {
-                        result = list[0].toInt() + list[2].toInt()
-                        list[0] = result.toString()
-                        list[1] = str
-                        list[2] = ""
-                    }
-                    list[1] == "-" -> {
-                        result = list[0].toInt() - list[2].toInt()
-                        list[0] = result.toString()
-                        list[1] = str
-                        list[2] = ""
-                    }
-                    list[1] == "*" -> {
-                        result = list[0].toInt() * list[2].toInt()
-                        list[0] = result.toString()
-                        list[1] = str
-                        list[2] = ""
-                    }
-                    list[1] == "/" -> {
-                        result = list[0].toInt() / list[2].toInt()
-                        list[0] = result.toString()
-                        list[1] = str
-                        list[2] = ""
-                    }
-                }
+                calculatingNumbers(str)
             } else {
-                numbersText.text = "Error"
-                list[0] = ""
-                list[1] = ""
+               setError()
+            }
+        }
+    }
+
+    private fun calculatingNumbers(str: String){
+        when {
+            list[1] == "+" -> {
+                result = list[0].toInt() + list[2].toInt()
+                list[0] = result.toString()
+                list[1] = str
+                list[2] = ""
+            }
+            list[1] == "-" -> {
+                result = list[0].toInt() - list[2].toInt()
+                list[0] = result.toString()
+                list[1] = str
+                list[2] = ""
+            }
+            list[1] == "*" -> {
+                result = list[0].toInt() * list[2].toInt()
+                list[0] = result.toString()
+                list[1] = str
+                list[2] = ""
+            }
+            list[1] == "/" -> {
+                result = list[0].toInt() / list[2].toInt()
+                list[0] = result.toString()
+                list[1] = str
                 list[2] = ""
             }
         }
+    }
+
+    private fun setError(){
+        numbersText.text = "Error"
+        list[0] = ""
+        list[1] = ""
+        list[2] = ""
     }
 
     override fun onSaveInstanceState(outState: Bundle) {
