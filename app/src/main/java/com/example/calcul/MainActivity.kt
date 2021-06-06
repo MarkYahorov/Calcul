@@ -10,12 +10,12 @@ import android.widget.Toast
 class MainActivity : AppCompatActivity() {
 
     /*здесь будуд храниться значения
-    list[0] - первое число
-    list[1] - оператор(+, -, *, /)
-    list[2] - второе число
+    expressionsList[0] - первое число
+    expressionsList[1] - оператор(+, -, *, /)
+    expressionsList[2] - второе число
      */
-    private val list = mutableListOf("", "", "")
-    private val list2 = mutableListOf("")
+    private val expressionsList = mutableListOf("", "", "")
+    private val currentNumber = mutableListOf("")
     private val STATE = "STATE"
 
     private var result: Number = 0
@@ -118,7 +118,7 @@ class MainActivity : AppCompatActivity() {
         }
         equalsBtn.setOnClickListener {
             calculationOfTheFinalExpressionAndDisplayingTheResultingValue()
-            Toast.makeText(this, list[0], Toast.LENGTH_LONG).show()
+            Toast.makeText(this, expressionsList[0], Toast.LENGTH_LONG).show()
         }
         plusBtn.setOnClickListener {
             mathOperation("+")
@@ -135,14 +135,14 @@ class MainActivity : AppCompatActivity() {
         cleanBtn.setOnClickListener {
             numbersText.text = ""
             resultText.text = ""
-            list2[0] = ""
-            list[0] = ""
-            list[1] = ""
-            list[2] = ""
+            currentNumber[0] = ""
+            expressionsList[0] = ""
+            expressionsList[1] = ""
+            expressionsList[2] = ""
         }
         btnOk.setOnClickListener {
             val intent = Intent()
-                .putExtra("EXTRA_CURRENT_NUMBER", list2[0])
+                .putExtra("EXTRA_CURRENT_NUMBER", currentNumber[0])
             setResult(RESULT_OK, intent)
             finish()
         }
@@ -153,70 +153,70 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun checkThisCell() {
-        if (list[0] == "" || list[0] != "" && list[1] == "") {
-            list[0] = numbersText.text.toString()
+        if (expressionsList[0] == "" || expressionsList[0] != "" && expressionsList[1] == "") {
+            expressionsList[0] = numbersText.text.toString()
         }
-        if (list[0] != "" && list[1] != "") {
-            list[2] = numbersText.text.toString()
+        if (expressionsList[0] != "" && expressionsList[1] != "") {
+            expressionsList[2] = numbersText.text.toString()
         }
     }
 
     private fun calculationOfTheFinalExpressionAndDisplayingTheResultingValue() {
-        if (list[0] != "" && list[1] != "" && list[2] != "") {
-            if (list[1] != "/" && list[2] != "0") {
+        if (expressionsList[0] != "" && expressionsList[1] != "" && expressionsList[2] != "") {
+            if (expressionsList[1] != "/" && expressionsList[2] != "0") {
                 mathOperation("")
-                numbersText.text = list2[0]
+                numbersText.text = currentNumber[0]
             } else {
                 numbersText.text = "Error"
             }
-        } else if (list[0] == "") {
+        } else if (expressionsList[0] == "") {
             numbersText.text = ""
-        } else if (list[0] != "" && list[1] == "") {
-            numbersText.text = list[0]
-        } else if (list[2] == "") {
+        } else if (expressionsList[0] != "" && expressionsList[1] == "") {
+            numbersText.text = expressionsList[0]
+        } else if (expressionsList[2] == "") {
             when {
-                list[1] == "+" -> {
-                    if (list2[0] == "") {
-                        result = list[0].toInt() + list[0].toInt()
-                        list2[0] = result.toString()
-                        numbersText.text = list2[0]
+                expressionsList[1] == "+" -> {
+                    if (currentNumber[0] == "") {
+                        result = expressionsList[0].toInt() + expressionsList[0].toInt()
+                        currentNumber[0] = result.toString()
+                        numbersText.text = currentNumber[0]
                     } else {
-                        result = list2[0].toInt() + list[0].toInt()
-                        list2[0] = result.toString()
-                        numbersText.text = list2[0]
+                        result = currentNumber[0].toInt() + expressionsList[0].toInt()
+                        currentNumber[0] = result.toString()
+                        numbersText.text = currentNumber[0]
                     }
                 }
-                list[1] == "-" -> {
-                    if (list2[0] == "") {
-                        result = list[0].toInt() - list[0].toInt()
-                        list2[0] = result.toString()
-                        numbersText.text = list2[0]
+                expressionsList[1] == "-" -> {
+                    if (currentNumber[0] == "") {
+                        result = expressionsList[0].toInt() - expressionsList[0].toInt()
+                        currentNumber[0] = result.toString()
+                        numbersText.text = currentNumber[0]
                     } else {
-                        result = list2[0].toInt() - list[0].toInt()
-                        list2[0] = result.toString()
-                        numbersText.text = list2[0]
+                        result = currentNumber[0].toInt() - expressionsList[0].toInt()
+                        currentNumber[0] = result.toString()
+                        numbersText.text = currentNumber[0]
                     }
                 }
-                list[1] == "*" -> {
-                    if (list2[0] == "") {
-                        result = list[0].toInt() * list[0].toInt()
-                        list2[0] = result.toString()
-                        numbersText.text = list2[0]
+                expressionsList[1] == "*" -> {
+                    if (currentNumber[0] == "") {
+                        result = expressionsList[0].toInt() * expressionsList[0].toInt()
+                        currentNumber[0] = result.toString()
+                        numbersText.text = currentNumber[0]
                     } else {
-                        result = list2[0].toInt() * list[0].toInt()
-                        list2[0] = result.toString()
-                        numbersText.text = list2[0]
+                        result = currentNumber[0].toInt() * expressionsList[0].toInt()
+                        currentNumber[0] = result.toString()
+                        numbersText.text = currentNumber[0]
                     }
                 }
-                list[1] == "/" -> {
-                    if (list2[0] == "") {
-                        result = list[0].toInt() / list[0].toInt()
-                        list2[0] = result.toString()
-                        numbersText.text = list2[0]
+                expressionsList[1] == "/" -> {
+                    if (currentNumber[0] == "") {
+                        result = expressionsList[0].toInt() / expressionsList[0].toInt()
+                        currentNumber[0] = result.toString()
+                        numbersText.text = currentNumber[0]
                     } else {
-                        result = list2[0].toInt() / list[0].toInt()
-                        list2[0] = result.toString()
-                        numbersText.text = list2[0]
+                        result = currentNumber[0].toInt() / expressionsList[0].toInt()
+                        currentNumber[0] = result.toString()
+                        numbersText.text = currentNumber[0]
                     }
                 }
             }
@@ -224,60 +224,60 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun mathOperation(str: String) {
-        if (list[0] != "" && list[1] == "" && list[2] == "") {
-            list[1] = str
+        if (expressionsList[0] != "" && expressionsList[1] == "" && expressionsList[2] == "") {
+            expressionsList[1] = str
             numbersText.text = ""
-        } else if (list[0] != "" && list[1] != "" && list[2] != "") {
-            if (list[1] != "/" && list[2] != "0") {
+        } else if (expressionsList[0] != "" && expressionsList[1] != "" && expressionsList[2] != "") {
+            if (expressionsList[1] != "/" && expressionsList[2] != "0") {
                 numbersText.text = ""
                 when {
-                    list[1] == "+" -> {
-                        result = list[0].toInt() + list[2].toInt()
-                        list[0] = result.toString()
-                        list2[0] = result.toString()
-                        list[1] = ""
-                        list[2] = ""
+                    expressionsList[1] == "+" -> {
+                        result = expressionsList[0].toInt() + expressionsList[2].toInt()
+                        expressionsList[0] = result.toString()
+                        currentNumber[0] = result.toString()
+                        expressionsList[1] = str
+                        expressionsList[2] = ""
                     }
-                    list[1] == "-" -> {
-                        result = list[0].toInt() - list[2].toInt()
-                        list[0] = result.toString()
-                        list2[0] = result.toString()
-                        list[1] = ""
-                        list[2] = ""
+                    expressionsList[1] == "-" -> {
+                        result = expressionsList[0].toInt() - expressionsList[2].toInt()
+                        expressionsList[0] = result.toString()
+                        currentNumber[0] = result.toString()
+                        expressionsList[1] = str
+                        expressionsList[2] = ""
                     }
-                    list[1] == "*" -> {
-                        result = list[0].toInt() * list[2].toInt()
-                        list[0] = result.toString()
-                        list2[0] = result.toString()
-                        list[1] = ""
-                        list[2] = ""
+                    expressionsList[1] == "*" -> {
+                        result = expressionsList[0].toInt() * expressionsList[2].toInt()
+                        expressionsList[0] = result.toString()
+                        currentNumber[0] = result.toString()
+                        expressionsList[1] = str
+                        expressionsList[2] = ""
                     }
-                    list[1] == "/" -> {
-                        result = list[0].toInt() / list[2].toInt()
-                        list[0] = result.toString()
-                        list2[0] = result.toString()
-                        list[1] = ""
-                        list[2] = ""
+                    expressionsList[1] == "/" -> {
+                        result = expressionsList[0].toInt() / expressionsList[2].toInt()
+                        expressionsList[0] = result.toString()
+                        currentNumber[0] = result.toString()
+                        expressionsList[1] = str
+                        expressionsList[2] = ""
                     }
                 }
             } else {
                 numbersText.text = "Error"
-                list[0] = ""
-                list[1] = ""
-                list[2] = ""
+                expressionsList[0] = ""
+                expressionsList[1] = ""
+                expressionsList[2] = ""
             }
         }
     }
 
     override fun onSaveInstanceState(outState: Bundle) {
         super.onSaveInstanceState(outState)
-        outState.putString(STATE, list[0])
+        outState.putString(STATE, expressionsList[0])
     }
 
     override fun onRestoreInstanceState(savedInstanceState: Bundle) {
         super.onRestoreInstanceState(savedInstanceState)
-        list[0] = savedInstanceState.getString(STATE).toString()
-        numbersText.text = list[0]
+        expressionsList[0] = savedInstanceState.getString(STATE).toString()
+        numbersText.text = expressionsList[0]
     }
 
     override fun onStop() {

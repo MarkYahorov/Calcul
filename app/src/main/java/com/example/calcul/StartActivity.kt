@@ -68,19 +68,19 @@ class StartActivity : AppCompatActivity() {
 
     private fun saveSharedPrefAndSetAllValues() {
         saveBtn.setOnClickListener {
-            if(firstValue == ""){
+            if (firstValue == "") {
                 firstValue = currentValue.text.toString()
                 setText()
-            }else if(secValue == ""){
+            } else if (secValue == "") {
                 secValue = currentValue.text.toString()
                 setText()
-            }else if(thirdValue == ""){
+            } else if (thirdValue == "") {
                 thirdValue = currentValue.text.toString()
                 setText()
-            } else if(fourthValue == ""){
+            } else if (fourthValue == "") {
                 fourthValue = currentValue.text.toString()
                 setText()
-            }else if(fiveValue == ""){
+            } else if (fiveValue == "") {
                 fiveValue = currentValue.text.toString()
                 setText()
             } else if (firstValue != "" && secValue != "" && thirdValue != "" && fourthValue != "" && firstValue != "") {
@@ -99,13 +99,13 @@ class StartActivity : AppCompatActivity() {
         val text = allValues.text.toString()
         getSharedPreferences(SHARED, Context.MODE_PRIVATE)
             .edit()
-            .apply{
-            putString(TEXT, text)
-        }.apply()
-        Toast.makeText(this, "SharedPref is completed!",Toast.LENGTH_LONG).show()
+            .apply {
+                putString(TEXT, text)
+            }.apply()
+        Toast.makeText(this, "SharedPref is completed!", Toast.LENGTH_LONG).show()
     }
 
-    private fun loadDataAndUpdateView(){
+    private fun loadDataAndUpdateView() {
         allValues.text = getSharedPreferences(SHARED, Context.MODE_PRIVATE).getString(TEXT, null)
     }
 
