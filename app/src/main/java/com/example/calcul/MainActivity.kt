@@ -9,6 +9,11 @@ import android.widget.Toast
 
 class MainActivity : AppCompatActivity() {
 
+    /*здесь будуд храниться значения
+    list[0] - первое число
+    list[1] - оператор(+, -, *, /)
+    list[2] - второе число
+     */
     private val list = mutableListOf("", "", "")
     private val list2 = mutableListOf("")
     private val STATE = "STATE"
@@ -130,6 +135,7 @@ class MainActivity : AppCompatActivity() {
         cleanBtn.setOnClickListener {
             numbersText.text = ""
             resultText.text = ""
+            list2[0] = ""
             list[0] = ""
             list[1] = ""
             list[2] = ""
@@ -158,40 +164,8 @@ class MainActivity : AppCompatActivity() {
     private fun calculationOfTheFinalExpressionAndDisplayingTheResultingValue() {
         if (list[0] != "" && list[1] != "" && list[2] != "") {
             if (list[1] != "/" && list[2] != "0") {
-                when {
-                    list[1] == "+" -> {
-                        result = list[0].toInt() + list[2].toInt()
-                        list[0] = result.toString()
-                        list2[0] = result.toString()
-                        list[1] = ""
-                        list[2] = ""
-                        numbersText.text = list2[0]
-                    }
-                    list[1] == "-" -> {
-                        result = list[0].toInt() - list[2].toInt()
-                        list[0] = result.toString()
-                        list2[0] = result.toString()
-                        list[1] = ""
-                        list[2] = ""
-                        numbersText.text = list2[0]
-                    }
-                    list[1] == "*" -> {
-                        result = list[0].toInt() * list[2].toInt()
-                        list[0] = result.toString()
-                        list2[0] = result.toString()
-                        list[1] = ""
-                        list[2] = ""
-                        numbersText.text = list2[0]
-                    }
-                    list[1] == "/" -> {
-                        result = list[0].toInt() / list[2].toInt()
-                        list[0] = result.toString()
-                        list2[0] = result.toString()
-                        list[1] = ""
-                        list[2] = ""
-                        numbersText.text = list2[0]
-                    }
-                }
+                mathOperation("")
+                numbersText.text = list2[0]
             } else {
                 numbersText.text = "Error"
             }
@@ -260,25 +234,29 @@ class MainActivity : AppCompatActivity() {
                     list[1] == "+" -> {
                         result = list[0].toInt() + list[2].toInt()
                         list[0] = result.toString()
-                        list[1] = str
+                        list2[0] = result.toString()
+                        list[1] = ""
                         list[2] = ""
                     }
                     list[1] == "-" -> {
                         result = list[0].toInt() - list[2].toInt()
                         list[0] = result.toString()
-                        list[1] = str
+                        list2[0] = result.toString()
+                        list[1] = ""
                         list[2] = ""
                     }
                     list[1] == "*" -> {
                         result = list[0].toInt() * list[2].toInt()
                         list[0] = result.toString()
-                        list[1] = str
+                        list2[0] = result.toString()
+                        list[1] = ""
                         list[2] = ""
                     }
                     list[1] == "/" -> {
                         result = list[0].toInt() / list[2].toInt()
                         list[0] = result.toString()
-                        list[1] = str
+                        list2[0] = result.toString()
+                        list[1] = ""
                         list[2] = ""
                     }
                 }
