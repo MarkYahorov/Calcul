@@ -32,6 +32,17 @@
         app:layout_constraintTop_toBottomOf="@+id/numbers" />
 
     <Button
+        android:id="@+id/btn_ok"
+        style="@style/btns"
+        android:text="@string/ok"
+        app:layout_constraintHorizontal_weight="1"
+        app:layout_constraintVertical_weight="3"
+        app:layout_constraintBottom_toTopOf="@id/clean_btn"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/numbers"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
         android:id="@+id/clean_btn"
         style="@style/btns"
         android:text="@string/clean"
@@ -40,7 +51,7 @@
         app:layout_constraintBottom_toBottomOf="@id/equations_and_result"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@id/numbers"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@id/btn_ok" />
 
     <Button
         android:id="@+id/nine_btn"

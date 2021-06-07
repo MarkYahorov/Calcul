@@ -7,5 +7,26 @@
         <item name="android:layout_margin">2dp</item>
     </style>
 
+    <style name="text_all_values">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:gravity">center</item>
+        <item name="android:singleLine">false</item>
+        <item name="android:textSize">25sp</item>
+        <item name="android:lines">5</item>
+        <item name="android:layout_height">wrap_content</item>
+    </style>
+
+    <style name="text_current_value">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:gravity">center</item>
+        <item name="android:textSize">24sp</item>
+    </style>
+
+    <style name="btns_of_start_screen">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+    </style>
+
 
 </resources>
